@@ -29,30 +29,30 @@
 
   gtag('config', 'G-6Q7WEHE8V2');
 </script>
-    <meta name="description" content="This article is recording How to solve the LeetCode question BinarySearch.">
+    <meta name="description" content="This article is recording How to solve the LeetCode question Permutation in String.">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="LeetCode 704.Binary Search">
-<meta property="og:url" content="https://lucaschen0511.github.io/2022/06/07/LeetCode-704-Binary-Search/index.html">
+<meta property="og:title" content="LeetCode 567.Permutation in String">
+<meta property="og:url" content="https://lucaschen0511.github.io/2022/06/16/LeetCode-567-Permutation-in-String/index.html">
 <meta property="og:site_name" content="LucasChen&#39;s Blog">
-<meta property="og:description" content="This article is recording How to solve the LeetCode question BinarySearch.">
+<meta property="og:description" content="This article is recording How to solve the LeetCode question Permutation in String.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-06-07T11:44:12.000Z">
-<meta property="article:modified_time" content="2022-06-08T07:09:47.376Z">
+<meta property="article:published_time" content="2022-06-16T15:00:36.000Z">
+<meta property="article:modified_time" content="2022-06-16T15:30:21.266Z">
 <meta property="article:author" content="LucasChen">
 <meta property="article:tag" content="algorithm">
 <meta property="article:tag" content="leetCode">
-<meta property="article:tag" content="binarySearch">
+<meta property="article:tag" content="sliding window">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://lucaschen0511.github.io/2022/06/07/LeetCode-704-Binary-Search/">
+<link rel="canonical" href="https://lucaschen0511.github.io/2022/06/16/LeetCode-567-Permutation-in-String/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://lucaschen0511.github.io/2022/06/07/LeetCode-704-Binary-Search/","path":"2022/06/07/LeetCode-704-Binary-Search/","title":"LeetCode 704.Binary Search"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://lucaschen0511.github.io/2022/06/16/LeetCode-567-Permutation-in-String/","path":"2022/06/16/LeetCode-567-Permutation-in-String/","title":"LeetCode 567.Permutation in String"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>LeetCode 704.Binary Search | LucasChen's Blog</title>
+<title>LeetCode 567.Permutation in String | LucasChen's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6Q7WEHE8V2"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-6Q7WEHE8V2","only_pageview":false}</script>
@@ -205,7 +205,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://lucaschen0511.github.io/2022/06/07/LeetCode-704-Binary-Search/">
+    <link itemprop="mainEntityOfPage" href="https://lucaschen0511.github.io/2022/06/16/LeetCode-567-Permutation-in-String/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -218,12 +218,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="LeetCode 704.Binary Search | LucasChen's Blog">
+      <meta itemprop="name" content="LeetCode 567.Permutation in String | LucasChen's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          LeetCode 704.Binary Search
+          LeetCode 567.Permutation in String
         </h1>
 
         <div class="post-meta-container">
@@ -233,15 +233,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2022-06-07 19:44:12" itemprop="dateCreated datePublished" datetime="2022-06-07T19:44:12+08:00">2022-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-06-08 15:09:47" itemprop="dateModified" datetime="2022-06-08T15:09:47+08:00">2022-06-08</time>
+      <time title="Created: 2022-06-16 23:00:36 / Modified: 23:30:21" itemprop="dateCreated datePublished" datetime="2022-06-16T23:00:36+08:00">2022-06-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -259,14 +253,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>1k</span>
+      <span>2.1k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>2 mins.</span>
     </span>
 </div>
 
@@ -277,27 +271,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>This article is recording How to solve the LeetCode question BinarySearch.</p>
+        <p>This article is recording How to solve the LeetCode question Permutation in String.</p>
 <span id="more"></span>
 
-<h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.</p>
-<p>You must write an algorithm with O(log n) runtime complexity.</p>
+<h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>Given two strings s1 and s2, return true if s2 contains a permutation of s1, or false otherwise.</p>
+<p>In other words, return true if one of s1’s permutations is the substring of s2.</p>
 <h4 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints"></a>Constraints</h4><ul>
-<li>1 &lt;&#x3D; nums.length &lt;&#x3D; 104</li>
-<li>-104 &lt; nums[i], target &lt; 104</li>
-<li>All the integers in nums are unique.</li>
-<li>nums is sorted in ascending order.</li>
+<li>1 &lt;&#x3D; s1.length, s2.length &lt;&#x3D; 104</li>
+<li>s1 and s2 consist of lowercase English letters.</li>
 </ul>
-<ol>
-<li>create two points low and high assigned zero and nums length.</li>
-<li>if low less than high, for loop.</li>
-<li>calculate mid by (low + (high - low) &#x2F; 2).</li>
-<li>if the int array mid-index is the target then return mid-index.</li>
-<li>if the int array mid-index is less than the target then the low point plus one.</li>
-<li>if the int array mid-index is greater than the target then the high point diminishes.</li>
-<li>if there is no answer return -1.</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public int <span class="title function_">search</span>(<span class="params">int[] nums, int target</span>) &#123;</span><br><span class="line">    int low = <span class="number">0</span>;</span><br><span class="line">    int high = nums.<span class="property">length</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (low &lt; high) &#123;</span><br><span class="line">        int mid = low + (high - low) /<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">            low++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            high--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">Take, s1 = ab, s2 = eioubab, find all substrings of length 2 in s2.</span><br><span class="line">substrings = [ei, io, ou, ub, ba, ab] from these substrings, find anagram.</span><br><span class="line">1. ei -&gt; it is not anagram of s1. Because e and i are not in s1.</span><br><span class="line">2. io -&gt; it is not anagram of s1. Because e is not in s1.</span><br><span class="line">3. ou -&gt; it is not anagram of s1. Because o is not in s1.</span><br><span class="line">4. ub -&gt; it is not anagram of s1. Because u is not in s1.</span><br><span class="line">5. ba -&gt; It is anagram of s1. So, return true.</span><br><span class="line">    Correctness :- Is this correct? Is ba permutation of ab?</span><br><span class="line">    -&gt; Yes. if we re-arrange letters in ab. we will get ba.</span><br><span class="line">        So, it is correct.</span><br><span class="line"></span><br><span class="line">If you don&#x27;t find any anagram, then return false.</span><br><span class="line"></span><br><span class="line">Now, let&#x27;s develop an algorithm to solve this problem.</span><br><span class="line"></span><br><span class="line">1. Find frequency of each character in s1.</span><br><span class="line">2. Now, we need to find all substrings of length s1 in s2.</span><br><span class="line">    This process can be efficiently done by using sliding window technique.</span><br><span class="line">	Sliding Window Technique:-</span><br><span class="line">	s2 = dbcad, s1 = abc</span><br><span class="line">	Take two pointers i and j. </span><br><span class="line">	Intially i and j point to starting position of string s. </span><br><span class="line">	s = d  b  c  a  d</span><br><span class="line">        ^</span><br><span class="line">	   i, j</span><br><span class="line">	-&gt;  move j until j - i == len(p)</span><br><span class="line">	s = d  b  c  a  d</span><br><span class="line">        ^        ^</span><br><span class="line">        i        j</span><br><span class="line">	Now, the substring formed here is  dbc, </span><br><span class="line">	it is not anagram so, move to next substring.</span><br><span class="line">	s = d  b  c  a  d</span><br><span class="line">           ^     ^</span><br><span class="line">           i     j</span><br><span class="line">   Now, j at 3rd index, i at 1st index.</span><br><span class="line">   3 - 1 &lt; 3</span><br><span class="line">   so, move j until j - i == len(p)</span><br><span class="line">   s = d  b  c  a  d</span><br><span class="line">          ^        ^</span><br><span class="line">          i        j</span><br><span class="line">    Now, substring formed here is bca.</span><br><span class="line">	It is anagram. So, return true.</span><br><span class="line">	We keep moving i and j until j reaches end of s2.</span><br><span class="line">	This is how we find substring using sliding window technique.</span><br><span class="line"> 	and check whether it is anagram or not.</span><br><span class="line">	if it is anagram, return true.</span><br><span class="line">3. If you don&#x27;t find anagram, then return false.</span><br><span class="line"></span><br><span class="line">TIME:- O(N)</span><br><span class="line">SPACE:- O(1)  </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public boolean <span class="title function_">checkInclusion</span>(<span class="params"><span class="built_in">String</span> s1, <span class="built_in">String</span> s2</span>) &#123;</span><br><span class="line">    int[] map = <span class="keyword">new</span> int[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">for</span> (char c : s1.<span class="title function_">toCharArray</span>()) &#123;</span><br><span class="line">        map[c - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">    &#125;</span><br><span class="line">    int j = <span class="number">0</span>, i = <span class="number">0</span>;</span><br><span class="line">    int count = s1.<span class="title function_">length</span>();</span><br><span class="line">    <span class="keyword">while</span> (j &lt; s2.<span class="title function_">length</span>()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (map[s2.<span class="title function_">charAt</span>(j++) - <span class="string">&#x27;a&#x27;</span>]-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            count--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (j - i == s1.<span class="title function_">length</span>() &amp;&amp; map[s2.<span class="title function_">charAt</span>(i++) - <span class="string">&#x27;a&#x27;</span>]++ &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -315,7 +300,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://lucaschen0511.github.io/2022/06/07/LeetCode-704-Binary-Search/" title="LeetCode 704.Binary Search">https://lucaschen0511.github.io/2022/06/07/LeetCode-704-Binary-Search/</a>
+      <a href="https://lucaschen0511.github.io/2022/06/16/LeetCode-567-Permutation-in-String/" title="LeetCode 567.Permutation in String">https://lucaschen0511.github.io/2022/06/16/LeetCode-567-Permutation-in-String/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -326,21 +311,18 @@
           <div class="post-tags">
               <a href="/tags/algorithm/" rel="tag"><i class="fa fa-tag"></i> algorithm</a>
               <a href="/tags/leetCode/" rel="tag"><i class="fa fa-tag"></i> leetCode</a>
-              <a href="/tags/binarySearch/" rel="tag"><i class="fa fa-tag"></i> binarySearch</a>
+              <a href="/tags/sliding-window/" rel="tag"><i class="fa fa-tag"></i> sliding window</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/06/06/install-nginx-on-k8s/" rel="prev" title="Installation nginx pod on Kubernates">
-                  <i class="fa fa-chevron-left"></i> Installation nginx pod on Kubernates
+                <a href="/2022/06/08/LeetCode-189-Rotate-Array/" rel="prev" title="LeetCode 189.Rotate Array">
+                  <i class="fa fa-chevron-left"></i> LeetCode 189.Rotate Array
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/06/08/LeetCode-189-Rotate-Array/" rel="next" title="LeetCode 189.Rotate Array">
-                  LeetCode 189.Rotate Array <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
