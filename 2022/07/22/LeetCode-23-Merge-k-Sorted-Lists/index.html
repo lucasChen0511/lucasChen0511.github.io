@@ -29,13 +29,15 @@
 
   gtag('config', 'G-6Q7WEHE8V2');
 </script>
-    <meta property="og:type" content="blog">
+    <meta name="description" content="This article is recording How to solve the LeetCode question Merge k Sorted Lists.">
+<meta property="og:type" content="blog">
 <meta property="og:title" content="LeetCode-23-Merge-k-Sorted-Lists">
 <meta property="og:url" content="https://lucaschen0511.github.io/2022/07/22/LeetCode-23-Merge-k-Sorted-Lists/index.html">
 <meta property="og:site_name" content="LucasChen&#39;s Blog">
+<meta property="og:description" content="This article is recording How to solve the LeetCode question Merge k Sorted Lists.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-07-22T04:38:41.000Z">
-<meta property="article:modified_time" content="2022-07-22T04:38:41.821Z">
+<meta property="article:modified_time" content="2022-07-22T05:19:58.354Z">
 <meta property="article:author" content="LucasChen">
 <meta name="twitter:card" content="summary">
 
@@ -113,7 +115,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -126,6 +128,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Question"><span class="nav-number">1.</span> <span class="nav-text">Question</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Constraints"><span class="nav-number">1.1.</span> <span class="nav-text">Constraints</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Priority-Queue"><span class="nav-number"></span> <span class="nav-text">Priority Queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Merge-with-Divide-And-Conquer"><span class="nav-number"></span> <span class="nav-text">Merge with Divide And Conquer</span></a></div>
         </div>
         <!--/noindex-->
 
@@ -227,8 +230,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2022-07-22 12:38:41" itemprop="dateCreated datePublished" datetime="2022-07-22T12:38:41+08:00">2022-07-22</time>
+      <time title="Created: 2022-07-22 12:38:41 / Modified: 13:19:58" itemprop="dateCreated datePublished" datetime="2022-07-22T12:38:41+08:00">2022-07-22</time>
     </span>
 
   
@@ -237,14 +241,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>0</span>
+      <span>2.4k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>2 mins.</span>
     </span>
 </div>
 
@@ -255,7 +259,38 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <p>This article is recording How to solve the LeetCode question Merge k Sorted Lists.</p>
+<span id="more"></span>
+
+<h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.</p>
+<p>Merge all the linked-lists into one sorted linked-list and return it.</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: lists = [[1,4,5],[1,3,4],[2,6]]</span><br><span class="line">Output: [1,1,2,3,4,4,5,6]</span><br><span class="line">Explanation: The linked-lists are:</span><br><span class="line">[</span><br><span class="line">  1-&gt;4-&gt;5,</span><br><span class="line">  1-&gt;3-&gt;4,</span><br><span class="line">  2-&gt;6</span><br><span class="line">]</span><br><span class="line">merging them into one sorted list:</span><br><span class="line">1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</span><br></pre></td></tr></table></figure>
+
+<h4 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints"></a>Constraints</h4><ul>
+<li>k &#x3D;&#x3D; lists.length</li>
+<li>0 &lt;&#x3D; k &lt;&#x3D; 104</li>
+<li>0 &lt;&#x3D; lists[i].length &lt;&#x3D; 500</li>
+<li>-104 &lt;&#x3D; lists[i][j] &lt;&#x3D; 104</li>
+<li>lists[i] is sorted in ascending order.</li>
+<li>The sum of lists[i].length will not exceed 104.</li>
+</ul>
+<hr>
+<h2 id="Priority-Queue"><a href="#Priority-Queue" class="headerlink" title="Priority Queue"></a>Priority Queue</h2><ol>
+<li>using priorityQueue to sort nodes.</li>
+<li>creating a new head node to consist of all nodes.</li>
+</ol>
+<p><strong>Time complexity :</strong></p>
+<p>O(Nlog k) where k is the number of linked lists.<br>The comparison cost will be reduced to O(logk) for every pop and insertion to priority queue. But finding the node with the smallest value just costs O(1) time.<br>There are N nodes in the final linked list.</p>
+<p><strong>Space complexity :</strong></p>
+<p>O(n) Creating a new linked list costs O(n) space.<br>O(k) The code above present applies in-place method which cost O(1) space. And the priority queue (often implemented with heaps) costs O(k) space (it’s far less than N in most situations).</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public <span class="title class_">ListNode</span> <span class="title function_">mergeKLists</span>(<span class="params">ListNode[] lists</span>) &#123;</span><br><span class="line">    <span class="title class_">Queue</span>&lt;<span class="title class_">ListNode</span>&gt; q = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;((o1, o2) -&gt; (o1.<span class="property">val</span> - o2.<span class="property">val</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="title class_">ListNode</span> node : lists) &#123;</span><br><span class="line">        <span class="keyword">if</span> (node != <span class="literal">null</span>) &#123;</span><br><span class="line">            q.<span class="title function_">offer</span>(node);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="title class_">ListNode</span> dummy = <span class="keyword">new</span> <span class="title class_">ListNode</span>();</span><br><span class="line">    <span class="title class_">ListNode</span> head = dummy;</span><br><span class="line">    <span class="keyword">while</span> (!q.<span class="title function_">isEmpty</span>()) &#123;</span><br><span class="line">        head.<span class="property">next</span> = q.<span class="title function_">poll</span>();</span><br><span class="line">        head = head.<span class="property">next</span>;</span><br><span class="line">        <span class="title class_">ListNode</span> next = head.<span class="property">next</span>;</span><br><span class="line">        <span class="keyword">if</span> (next != <span class="literal">null</span>) &#123;</span><br><span class="line">            q.<span class="title function_">offer</span>(next);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummy.<span class="property">next</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Merge-with-Divide-And-Conquer"><a href="#Merge-with-Divide-And-Conquer" class="headerlink" title="Merge with Divide And Conquer"></a>Merge with Divide And Conquer</h2><p><strong>Time complexity :</strong></p>
+<p>O(N logk), where k is the number of linked lists.</p>
+<p><strong>Space complexity :</strong></p>
+<p> O(1), We can merge two sorted linked lists in O(1) space.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public <span class="title class_">ListNode</span> <span class="title function_">mergeKLists</span>(<span class="params">ListNode[] lists</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (lists.<span class="property">length</span> == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    int interval = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (interval &lt; lists.<span class="property">length</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (int i = <span class="number">0</span>; i + interval &lt; lists.<span class="property">length</span>; i = i + interval * <span class="number">2</span>) &#123;</span><br><span class="line">            lists[i] = <span class="title function_">mergeTwoLists</span>(lists[i], lists[i+interval]);</span><br><span class="line">        &#125;</span><br><span class="line">        interval *= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> lists[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">private <span class="title class_">ListNode</span> <span class="title function_">mergeTwoLists</span>(<span class="params">ListNode l1, ListNode l2</span>) &#123;</span><br><span class="line">    <span class="title class_">ListNode</span> dummy = <span class="keyword">new</span> <span class="title class_">ListNode</span>();</span><br><span class="line">    <span class="title class_">ListNode</span> head = dummy;</span><br><span class="line">    <span class="keyword">while</span> (l1 != <span class="literal">null</span> &amp;&amp; l2 != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (l1.<span class="property">val</span> &lt; l2.<span class="property">val</span>) &#123;</span><br><span class="line">            head.<span class="property">next</span> = l1;</span><br><span class="line">            l1 = l1.<span class="property">next</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            head.<span class="property">next</span> = l2;</span><br><span class="line">            l2 = l2.<span class="property">next</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        head = head.<span class="property">next</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (l1 != <span class="literal">null</span>) head.<span class="property">next</span> = l1;</span><br><span class="line">    <span class="keyword">if</span> (l2 != <span class="literal">null</span>) head.<span class="property">next</span> = l2;</span><br><span class="line">    <span class="keyword">return</span> dummy.<span class="property">next</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
