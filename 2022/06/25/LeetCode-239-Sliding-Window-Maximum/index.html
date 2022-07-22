@@ -37,7 +37,7 @@
 <meta property="og:description" content="This article is recording How to solve the LeetCode question Sliding Window Maximum.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-06-25T08:10:48.000Z">
-<meta property="article:modified_time" content="2022-06-25T08:14:50.298Z">
+<meta property="article:modified_time" content="2022-06-25T12:20:10.560Z">
 <meta property="article:author" content="LucasChen">
 <meta property="article:tag" content="algorithm">
 <meta property="article:tag" content="leetCode">
@@ -144,7 +144,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -235,7 +235,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-06-25 16:10:48 / Modified: 16:14:50" itemprop="dateCreated datePublished" datetime="2022-06-25T16:10:48+08:00">2022-06-25</time>
+      <time title="Created: 2022-06-25 16:10:48 / Modified: 20:20:10" itemprop="dateCreated datePublished" datetime="2022-06-25T16:10:48+08:00">2022-06-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -281,7 +281,8 @@
 <li>-104 &lt;&#x3D; nums[i] &lt;&#x3D; 104</li>
 <li>1 &lt;&#x3D; k &lt;&#x3D; nums.length</li>
 </ul>
-<p>If we can add and remove elements from both sides of the sliding window, we can solve this problem in linear time. It turns out that we can use Deque to achieve the goal. In the Deque, we add and remove indices.<br>Basically, for each element nums[i] in the array that we are about to insert, we first check whether the leftmost index in the sliding window is out of bound. If so, we remove it by pollFirst() in constant time.</p>
+<p>If we can add and remove elements from both sides of the sliding window, we can solve this problem in linear time. It turns out that we can use Deque to achieve the goal. In the Deque, we add and remove indices.</p>
+<p>Basically, for each element nums[i] in the array that we are about to insert, we first check whether the leftmost index in the sliding window is out of bound. If so, we remove it by pollFirst() in constant time.</p>
 <p>Then we continuously remove the rightmost indices if their corresponding elements are less than nums[i] (the element we are about to insert). The idea is that the elements that are less than the element we’ll insert won’t have any contributions to the maximum element of the sliding window. So it is safe to remove them.</p>
 <p>After removal pollLast() and insertion offerLast(i) (the element nums[i]), we can say that the leftmost element in the window is maximum. Think about it why. Notice that the maximum element could be the one we just insert.</p>
 <p>Last but not least, adding the maximum elements to the result array when necessary.</p>
@@ -326,6 +327,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/07/22/LeetCode-23-Merge-k-Sorted-Lists/" rel="next" title="LeetCode-23-Merge-k-Sorted-Lists">
+                  LeetCode-23-Merge-k-Sorted-Lists <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
